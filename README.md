@@ -1,4 +1,4 @@
-# Prerequisites
+# Prerequi
 #
 - JDK 1.8 or later can be installed
 - Maven 3 or later
