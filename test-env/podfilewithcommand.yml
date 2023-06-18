@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hellopod
+  labels:
+    app: hp
+spec:
+  containers:
+    - name: hellocont
+      image: ubuntu
+      ports:
+        - containerPort: 8080
+          protocol: TCP
+      env:
+        - name: test
+          value: "hello akshay"
+      command: ["/bin/echo"]
+      args: ["$(test)"]
+

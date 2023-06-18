@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: testpod
+spec:
+  containers:
+    - name: testcont
+      image: tomcat
+      ports:
+        - name: contport
+          containerPort: 8080
+      env:
+        - name: AKSHAY
+          value: "sharma"

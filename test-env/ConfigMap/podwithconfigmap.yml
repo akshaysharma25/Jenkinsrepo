@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Pod
+metadata:
+   name: conpod
+spec:
+  containers:
+    - name: conpod
+      image: tomcat
+      ports:
+       - name: conport
+         containerPort: 8080
+      env: 
+       - name: AKSHAYM
+         valueFrom:
+           configMapKeyRef:
+             name: testconf
+             key: akshaym
+       - name: AKSHAYS
+         valueFrom:
+           configMapKeyRef:
+             name: testconf
+             key: akshays   
+      volumeMounts: 
+        - name: convol
+          mountPath: /conf
+          readOnly: true
+  volumes:
+   - name: convol
+     configMap:
+       name: testconf
+       items:
+        - key: "akshaym"
+          path: "akshaym"
+        - key: "akshays"
+          path: "akshays"
+
