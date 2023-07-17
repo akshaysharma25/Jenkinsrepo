@@ -9,7 +9,7 @@ pipeline{
                 {
                     try 
                     {
-                        checkout([$class: 'GitSCM', branches: [[name: "${GIT_BRANCH}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/akshaysharma25/Jenkinsrepo.git']]])
+                        checkout([$class: 'GitSCM', branches: [[name: "${GIT_BRANCH}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'jenkins-master-private-key', url: 'git@github.com:akshaysharma25/Jenkinsrepo.git']]])
                         sh """
                         #!/bin/bash
                         git checkout ${GIT_BRANCH}
