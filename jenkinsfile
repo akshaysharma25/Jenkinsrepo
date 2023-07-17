@@ -1,0 +1,34 @@
+pipeline{
+    agent any
+    stages{
+      stage('Git checkout')
+        {
+            steps
+            {
+                script
+                {
+                    try 
+                    {
+                        checkout([$class: 'GitSCM', branches: [[name: "${GIT_BRANCH}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/akshaysharma25/Jenkinsrepo.git']]])
+                        sh """
+                        #!/bin/bash
+                        git checkout ${GIT_BRANCH}
+                        """
+                    }
+                    catch (exc)
+                    {
+                        echo 'Git checkout failed'
+                        throw exc
+                    }
+                }
+            }
+        }
+
+
+
+    }
+
+
+
+
+    }
